@@ -2,8 +2,8 @@
 Beamer DEI v2
 =============
 
-This is an attempt to reproduce the slide template of Dipartimenti di
-Elettronica e Informazione -- Politecnico di Milano as as Beamer class.
+This is an attempt to reproduce the slide template of Dipartimento di
+Elettronica e Informazione -- Politecnico di Milano as as Beamer theme.
 
 Current features:
 
