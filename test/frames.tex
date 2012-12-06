@@ -1,0 +1,185 @@
+
+% frames.tex: test for frames.
+
+\part{Frames \& Sons}
+
+\begin{frame}
+\partpage
+\end{frame}
+
+\begin{frame}{\contentsname}
+\tableofcontents
+\end{frame}
+
+\section{Frame Structure}
+
+\begin{frame}{Frame Title}{Frame Subtitle}
+\begin{columns}
+\column{.45\textwidth}
+\begin{figure}
+Imagine there's a picture
+
+\caption{Some picture}
+\label{fig:some-picture}
+\end{figure}
+
+\column{.45\textwidth}
+\begin{table}
+\caption{Some table}
+\label{tab:some-table}
+
+It's easy if you try
+\end{table}
+\end{columns}
+\end{frame}
+
+\section{Frame Elements}
+
+\begin{frame}{Blocks}
+\begin{columns}[t]
+\column{.33\textwidth}
+\begin{block}{Normal}
+Not very important stuffs.
+\end{block}
+
+\column{.33\textwidth}
+\begin{alertblock}{Alert}
+Critical stuffs.
+\end{alertblock}
+
+\column{.33\textwidth}
+\begin{exampleblock}{Example}
+Stuffs to better understand critical stuffs.
+\end{exampleblock}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Itemize \& Enumerate}
+\begin{columns}
+\column{.45\textwidth}
+Itemize:
+
+\begin{itemize}
+\item Italy
+      \begin{itemize}
+      \item Inter
+            \begin{itemize}
+            \item Giacinto Facchetti
+            \item Helenio Herrera
+            \end{itemize}
+      \item Milan
+            \begin{itemize}
+            \item Paolo Maldini
+            \item Arrigo Sacchi
+            \end{itemize}
+      \end{itemize}
+
+\item Spain
+      \begin{itemize}
+      \item Barcelona
+            \begin{itemize}
+            \item Leonard Messi
+            \item Josep Guardiola
+            \end{itemize}
+      \item Real Madrid
+            \begin{itemize}
+            \item Cristiano Ronaldo
+            \item José Mourinho
+            \end{itemize}
+      \end{itemize}
+\end{itemize}
+
+\column{.45\textwidth}
+Enumerate:
+
+\begin{enumerate}
+\item Italy
+      \begin{enumerate}
+      \item Inter
+            \begin{enumerate}
+            \item Giacinto Facchetti
+            \item Helenio Herrera
+            \end{enumerate}
+      \item Milan
+            \begin{enumerate}
+            \item Paolo Maldini
+            \item Arrigo Sacchi
+            \end{enumerate}
+      \end{enumerate}
+
+\item Spain
+      \begin{enumerate}
+      \item Barcelona
+            \begin{enumerate}
+            \item Leonard Messi
+            \item Josep Guardiola
+            \end{enumerate}
+      \item Real Madrid
+            \begin{enumerate}
+            \item Cristiano Ronaldo
+            \item José Mourinho
+            \end{enumerate}
+      \end{enumerate}
+\end{enumerate}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Description}
+Some Mars rovers:
+
+\begin{description}
+\item[Opportunity] launched from Earth on July 7, 2003, it landed on Meridiani
+                   Planum on January 25, 2004 at 05:05 Ground UTC
+\item[Spirit] landed successfully on Mars at 04:35 Ground UTC on January 4,
+              2004, three weeks before its twin, Opportunity
+\item[Curiosity] launched from Cape Canaveral on November 26, 2011, at 10:02 EST
+                 aboard the MSL spacecraft and successfully landed on Aeolis
+                 Palus in Gale Crater on Mars on August 6, 2012, 05:17 UTC
+\end{description}
+\end{frame}
+
+\begin{frame}{Poetry}
+It looks that \LaTeX defines a special environment for poems:
+
+\begin{verse}
+Nel mezzo del cammin di nostra vita \\
+mi ritrovai per una selva oscura, \\
+ché la diritta via era smarrita.
+\end{verse}
+
+\note{Does this mean that someone is using \LaTeX to write poems?}
+\end{frame}
+
+\begin{frame}{Quotes}
+The \texttt{quotation} environment is for long multi-paragraph quotes:
+
+\begin{quotation}
+La Spagna ora è insuperabile, come Davide contro Golia, un gigante da abbattere.
+Però mai dire mai: i gatti dormono solo quando sono tutti nel sacco.
+\end{quotation}
+
+Giovanni Trapattoni, April 23, 2012
+
+\bigskip
+
+While \texttt{quote} is suitable for short single-paragraph ones:
+
+\begin{quote}
+That's one small step for [a] man, one giant leap for mankind.
+\end{quote}
+
+Neil Armstrong, July 20, 1969
+\end{frame}
+
+\begin{frame}{Buttons}
+I never used buttons, but let's give them a chance:
+
+\begin{itemize}
+\item \beamerbutton{Just a Button}
+\item \beamergotobutton{Go to Button}
+\item \beamerreturnbutton{Return From}
+\item \beamerskipbutton{Skip to Button}
+\end{itemize}
+
+Useless -- I will not spend much time for supporting buttons.
+\end{frame}
