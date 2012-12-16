@@ -1,0 +1,166 @@
+% Copyright 2010 by Ettore Speziale <speziale.ettore@gmail.com>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% Dipartimento di Elettronica ed Informazione outer theme.
+
+\RequirePackage{tikz}
+
+\newdimen\beamer@frametitlewidth
+
+\newdimen\beamer@sidebaronewidth
+\newdimen\beamer@sidebartwowidth
+\newdimen\beamer@sidebarwidth
+
+\newdimen\beamer@framebarwidth
+
+\newdimen\beamer@footonewidth
+\newdimen\beamer@foottwowidth
+
+\newdimen\beamer@headheight
+\newdimen\beamer@framebarheight
+\newdimen\beamer@footheight
+\newdimen\beamer@footextraheight
+
+\beamer@sidebaronewidth=0.21in
+\beamer@sidebartwowidth=0.14in
+\beamer@sidebarwidth=0.35in
+
+\beamer@framebarwidth=0.59in
+
+\beamer@headheight=0.42in
+\beamer@framebarheight=0.04in
+\beamer@footheight=0.10in
+\beamer@footextraheight=0.04in
+
+\beamer@tempdim=\paperwidth
+\advance\beamer@tempdim by -\beamer@sidebarwidth
+\advance\beamer@tempdim by -\beamer@framebarwidth
+
+\beamer@frametitlewidth=\beamer@tempdim
+
+\beamer@tempdim=\paperwidth
+\advance\beamer@tempdim by -\beamer@sidebarwidth
+\divide\beamer@tempdim by 2
+
+\beamer@footonewidth=\beamer@tempdim
+\beamer@foottwowidth=\beamer@tempdim
+
+\setbeamersize{sidebar width left=\beamer@sidebarwidth}
+
+% TODO: remove.
+\usecolortheme{dei-v2}
+
+%%%% Presentation settings %%%%
+
+\mode<presentation>
+
+\defbeamertemplate*{frametitle}{dei theme}
+{%
+  \nointerlineskip%
+  \vskip-\beamer@headheight%
+  \vbox to \beamer@headheight%
+  {%
+    \vfil
+    \leftskip=-\beamer@leftmargin%
+    \advance\leftskip by 0.3cm%
+    \rightskip=-\beamer@rightmargin%
+    \advance\rightskip by 0.3cm plus 1fil%
+    {%
+      \usebeamercolor[fg]{frametitle}%
+      \usebeamerfont{frametitle}\insertframetitle\par%
+    }%
+    {%
+      \usebeamercolor[fg]{framesubtitle}%
+      \usebeamerfont{framesubtitle}\insertframesubtitle\par%
+    }%
+    \vbox{}%
+    \vskip-1em%
+    \vfil
+  }%
+}
+
+\defbeamertemplate*{headline}{dei theme}
+{
+  \hbox{%
+    \begin{beamercolorbox}[wd=\beamer@sidebaronewidth,
+                           ht=\beamer@headheight]{palette sidebar primary}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@sidebartwowidth,
+                           ht=\beamer@headheight]{palette sidebar tertiary}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@frametitlewidth,
+                           ht=\beamer@headheight]{frametitle}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@framebarwidth,
+                           ht=\beamer@headheight]{frametitle}
+      \vbox to \beamer@headheight{%
+        \usebeamercolor[bg]{palette tertiary}%
+        \vrule width \beamer@framebarwidth height \beamer@framebarheight%
+        \vskip1em%
+        \centering\insertframenumber\hspace*{2ex}%
+        \vfil%
+      }%
+    \end{beamercolorbox}%
+  }
+}
+
+\defbeamertemplate*{sidebar left}{dei theme}
+{
+  \hbox{%
+    \begin{beamercolorbox}[wd=\beamer@sidebaronewidth,
+                           ht=\beamer@paperheight]{palette sidebar secondary}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@sidebartwowidth,
+                           ht=\beamer@paperheight]{palette sidebar quaternary}
+    \end{beamercolorbox}%
+  }
+}
+
+\defbeamertemplate*{footline}{dei theme}
+{
+  \hfill%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\beamer@foottwowidth,
+                           ht=\beamer@footextraheight]{palette tertiary}
+    \end{beamercolorbox}%
+  }
+  \hbox{%
+    \begin{beamercolorbox}[wd=\beamer@sidebaronewidth,
+                           ht=\beamer@footheight,
+                           dp=0.05in]{palette secondary}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@sidebartwowidth,
+                           ht=\beamer@footheight,
+                           dp=0.05in]{palette quaternary}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@footonewidth,
+                           ht=\beamer@footheight,
+                           dp=0.05in,
+                           right]{author in head/foot}
+      \insertshortinstitute~~\insertauthor\hspace*{2ex}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\beamer@foottwowidth,
+                           ht=\beamer@footheight,
+                           dp=0.05in,
+                           center]{institute in head/foot}
+      \insertlogo
+    \end{beamercolorbox}%
+  }
+}
+
+\defbeamertemplate*{background}{dei theme}{
+  \begin{tikzpicture}
+  \end{tikzpicture}
+}
+
+\defbeamertemplate*{navigation symbols}{dei theme}{}
+
+\setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
+
+%%%% All settings %%%%
+
+\mode<all>

@@ -16,6 +16,7 @@ ACLTX_CHECK()
 AC_CONFIG_FILES([Makefile \
                  test/Makefile])
 
-AC_CONFIG_FILES([test/fontdei-test.tex])
+AC_CONFIG_FILES([test/fontdei-test.tex \
+                 test/outerdei-test.tex])
 
 AC_OUTPUT()
