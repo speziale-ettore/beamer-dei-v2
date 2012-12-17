@@ -7,8 +7,6 @@
 %
 % Dipartimento di Elettronica ed Informazione outer theme.
 
-\RequirePackage{tikz}
-
 \newdimen\beamer@frametitlewidth
 
 \newdimen\beamer@sidebaronewidth
@@ -36,13 +34,13 @@
 \beamer@footheight=0.10in
 \beamer@footextraheight=0.04in
 
-\beamer@tempdim=\paperwidth
+\beamer@tempdim=\beamer@paperwidth
 \advance\beamer@tempdim by -\beamer@sidebarwidth
 \advance\beamer@tempdim by -\beamer@framebarwidth
 
 \beamer@frametitlewidth=\beamer@tempdim
 
-\beamer@tempdim=\paperwidth
+\beamer@tempdim=\beamer@paperwidth
 \advance\beamer@tempdim by -\beamer@sidebarwidth
 \divide\beamer@tempdim by 2
 
@@ -110,7 +108,7 @@
 
 \defbeamertemplate*{sidebar left}{dei theme}
 {
-  \hbox{%
+  \hbox to \beamer@sidebarwidth {%
     \begin{beamercolorbox}[wd=\beamer@sidebaronewidth,
                            ht=\beamer@paperheight]{palette sidebar secondary}
     \end{beamercolorbox}%
@@ -122,13 +120,13 @@
 
 \defbeamertemplate*{footline}{dei theme}
 {
-  \hfill%
-  \hbox{%
+  \hbox to \beamer@paperwidth {%
+    \hfill%
     \begin{beamercolorbox}[wd=\beamer@foottwowidth,
                            ht=\beamer@footextraheight]{palette tertiary}
     \end{beamercolorbox}%
   }
-  \hbox{%
+  \hbox to \beamer@paperwidth {%
     \begin{beamercolorbox}[wd=\beamer@sidebaronewidth,
                            ht=\beamer@footheight,
                            dp=0.05in]{palette secondary}
@@ -153,8 +151,24 @@
 }
 
 \defbeamertemplate*{background}{dei theme}{
-  \begin{tikzpicture}
-  \end{tikzpicture}
+  \begin{pgfpicture}{0}{0}{\beamer@paperwidth}{\beamer@paperheight}
+    \newdimen\beamer@backgroundbase
+    \newdimen\beamer@backgroundtop
+
+    \beamer@backgroundbase=\beamer@footheight
+    \advance\beamer@backgroundbase by 0.05in
+
+    \beamer@backgroundtop=\beamer@paperheight
+    \advance\beamer@backgroundtop by -\beamer@headheight
+    \advance\beamer@backgroundtop by -\beamer@footheight
+    \advance\beamer@backgroundtop by -0.05in
+
+    \pgfsetstrokecolor{background.bg}
+    \pgfsetfillcolor{background.bg}
+    \pgfpathrectangle{\pgfpoint{\beamer@sidebarwidth}{\beamer@backgroundbase}}
+                     {\pgfpoint{\beamer@paperwidth}{\beamer@backgroundtop}}
+    \pgfusepath{stroke,fill}
+  \end{pgfpicture}
 }
 
 \defbeamertemplate*{navigation symbols}{dei theme}{}
