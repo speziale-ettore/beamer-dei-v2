@@ -7,6 +7,8 @@
 %
 % Dipartimento di Elettronica ed Informazione outer theme.
 
+\RequirePackage{etex}
+
 \newdimen\beamer@frametitlewidth
 
 \newdimen\beamer@sidebaronewidth
@@ -48,13 +50,237 @@
 \beamer@foottwowidth=\beamer@tempdim
 
 \setbeamersize{sidebar width left=\beamer@sidebarwidth}
+\setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
 
 % TODO: remove.
 \usecolortheme{dei-v2}
+\useinnertheme{dei-v2}
+
+% TODO: usebeamerfont.
 
 %%%% Presentation settings %%%%
 
 \mode<presentation>
+
+% The title page is rendered in a different way. Renew \maketitle to
+% transparently install a custom theme.
+\renewcommand{\maketitle}{
+  \begingroup
+    \setlength{\hoffset}{-0.5\beamer@sidebarwidth}
+
+    \setbeamertemplate{frametitle}[dei titlepage theme]
+    \setbeamertemplate{headline}[dei titlepage theme]
+    \setbeamertemplate{sidebar left}[dei titlepage theme]
+    \setbeamertemplate{footline}[dei titlepage theme]
+    \setbeamertemplate{background}[dei titlepage theme]
+
+    \begin{frame}
+      \titlepage
+    \end{frame}
+
+  \endgroup
+}
+
+%%% Theme for title page %%%
+
+\defbeamertemplate*{frametitle}{dei titlepage theme}{}
+\defbeamertemplate*{headline}{dei titlepage theme}{}
+\defbeamertemplate*{sidebar left}{dei titlepage theme}{}
+\defbeamertemplate*{footline}{dei titlepage theme}{}
+
+\defbeamertemplate*{background}{dei titlepage theme}
+{%
+  \hskip .5\beamer@sidebarwidth%
+  \vbox to \beamer@headheight {%
+    \vskip -\beamer@headheight%
+
+    \begin{pgfpicture}{0}{0}{\beamer@paperwidth}{\beamer@paperheight}
+      % Draw upper logo area.
+
+      \newdimen\beamer@logowidth
+      \newdimen\beamer@logoheight
+      \newdimen\beamer@logobase
+
+      \beamer@logowidth=1.69in
+      \beamer@logoheight=0.76in
+
+      \beamer@logobase=\beamer@paperheight
+      \advance\beamer@logobase by -\beamer@logoheight
+
+      \usebeamercolor[bg]{logo}
+      \pgfpathrectangle{\pgfpoint{0in}{\beamer@logobase}}
+                       {\pgfpoint{\beamer@logowidth}{\beamer@logoheight}}
+
+      % Draw horizontal box background.
+
+      \newdimen\beamer@backgroundbase
+      \newdimen\beamer@backgroundheight
+
+      \beamer@backgroundbase=\beamer@paperheight
+      \advance\beamer@backgroundbase by -\beamer@logoheight
+      \advance\beamer@backgroundbase by -1.15in
+
+      \beamer@backgroundheight=1.15in
+
+      \usebeamercolor[bg]{logo}
+      \pgfpathrectangle{\pgfpoint{0in}{\beamer@backgroundbase}}
+                       {\pgfpoint{\beamer@paperwidth}{\beamer@backgroundheight}}
+
+      % Draw small line delimiting the title.
+
+      \pgfpathrectangle{\pgfpoint{0.56in}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.01in}{-0.54in}}
+
+      \pgfusepath{fill}
+
+      % Now, draw the logo. I tried using pgf foreach, by I cannot update the
+      % iteration variables inside the loop, so I had to unroll the whole 2D
+      % loop nest.
+
+      \newdimen\beamer@logodiagbasex
+      \newdimen\beamer@logoboxwidth
+      \newdimen\beamer@logoboxheight
+
+      \newdimen\beamer@logoboxbasex
+      \newdimen\beamer@logoboxbasey
+
+      \beamer@logodiagbasex=\beamer@logowidth
+      \beamer@logoboxwidth=0.27in
+      \beamer@logoboxheight=0.18in
+
+      \usebeamercolor[fg]{logo}
+
+      % 3rd diagonal.
+      \pgfsetfillopacity{0.6}
+      \advance\beamer@logodiagbasex by -\beamer@logoboxwidth
+      \beamer@logoboxbasex=\beamer@logodiagbasex
+      \beamer@logoboxbasey=\beamer@logobase
+      \pgfpathrectangle{\pgfpoint{\beamer@logoboxbasex}{\beamer@logoboxbasey}}
+                       {\pgfpoint{\beamer@logoboxwidth}{\beamer@logoboxheight}}
+      \pgfusepath{fill}
+
+      % 2nd diagonal.
+      \pgfsetfillopacity{0.5}
+      \advance\beamer@logodiagbasex by -\beamer@logoboxwidth
+      \advance\beamer@logodiagbasex by -0.01in
+      \beamer@logoboxbasex=\beamer@logodiagbasex
+      \beamer@logoboxbasey=\beamer@logobase
+      \pgfpathrectangle{\pgfpoint{\beamer@logoboxbasex}{\beamer@logoboxbasey}}
+                       {\pgfpoint{\beamer@logoboxwidth}{\beamer@logoboxheight}}
+      \advance\beamer@logoboxbasex by \beamer@logoboxwidth
+      \advance\beamer@logoboxbasex by 0.01in
+      \advance\beamer@logoboxbasey by \beamer@logoboxheight
+      \advance\beamer@logoboxbasey by 0.01in
+      \pgfpathrectangle{\pgfpoint{\beamer@logoboxbasex}{\beamer@logoboxbasey}}
+                       {\pgfpoint{\beamer@logoboxwidth}{\beamer@logoboxheight}}
+      \pgfusepath{fill}
+
+      % 1st diagonal.
+      \pgfsetfillopacity{0.4}
+      \advance\beamer@logodiagbasex by -\beamer@logoboxwidth
+      \advance\beamer@logodiagbasex by -0.01in
+      \beamer@logoboxbasex=\beamer@logodiagbasex
+      \beamer@logoboxbasey=\beamer@logobase
+      \pgfpathrectangle{\pgfpoint{\beamer@logoboxbasex}{\beamer@logoboxbasey}}
+                       {\pgfpoint{\beamer@logoboxwidth}{\beamer@logoboxheight}}
+      \advance\beamer@logoboxbasex by \beamer@logoboxwidth
+      \advance\beamer@logoboxbasex by 0.01in
+      \advance\beamer@logoboxbasey by \beamer@logoboxheight
+      \advance\beamer@logoboxbasey by 0.01in
+      \pgfpathrectangle{\pgfpoint{\beamer@logoboxbasex}{\beamer@logoboxbasey}}
+                       {\pgfpoint{\beamer@logoboxwidth}{\beamer@logoboxheight}}
+      \advance\beamer@logoboxbasex by \beamer@logoboxwidth
+      \advance\beamer@logoboxbasex by 0.01in
+      \advance\beamer@logoboxbasey by \beamer@logoboxheight
+      \advance\beamer@logoboxbasey by 0.01in
+      \pgfpathrectangle{\pgfpoint{\beamer@logoboxbasex}{\beamer@logoboxbasey}}
+                       {\pgfpoint{\beamer@logoboxwidth}{\beamer@logoboxheight}}
+      \pgfusepath{fill}
+
+      \pgfsetfillopacity{1}
+
+      % Institute.
+
+      \usebeamercolor[bg]{palette tertiary}
+      \pgfpathrectangle{\pgfpoint{0in}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.56in}{0.92in}}
+      \pgfusepath{fill}
+
+      % TODO: insertlogo.
+
+      % TODO: insertshortinstitute.
+
+      % Opaque boxes.
+
+      \newdimen\beamer@boxstart
+      \newdimen\beamer@boxwidth
+
+      \usebeamercolor[fg]{logo}
+      \pgfsetfillopacity{0.3}
+
+      % This box cover almost all the banner.
+
+      \beamer@boxwidth=\beamer@paperwidth
+      \advance\beamer@boxwidth by -\beamer@logowidth
+
+      \pgfpathrectangle{\pgfpoint{\beamer@logowidth}{\beamer@backgroundbase}}
+                       {\pgfpoint{\beamer@boxwidth}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      % First group of opaque boxes.
+
+      \pgfpathrectangle{\pgfpoint{\beamer@logowidth}{\beamer@backgroundbase}}
+                       {\pgfpoint{1.16in}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      \beamer@boxstart=\beamer@logowidth
+      \advance\beamer@boxstart by 0.36in
+
+      \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.57in}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      \beamer@boxstart=\beamer@logowidth
+      \advance\beamer@boxstart by 0.66in
+
+      \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.11in}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      % Second group of opaque boxes.
+
+      \beamer@boxstart=\beamer@logowidth
+      \advance\beamer@boxstart by 2.47in
+
+      \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.39in}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      \beamer@boxstart=\beamer@logowidth
+      \advance\beamer@boxstart by 2.70in
+
+      \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.16in}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      \beamer@boxstart=\beamer@logowidth
+      \advance\beamer@boxstart by 2.98in
+
+      \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
+                       {\pgfpoint{0.04in}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+
+      \beamer@boxwidth=\beamer@paperwidth
+      \advance\beamer@boxwidth by -\beamer@boxstart
+
+      \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
+                       {\pgfpoint{\beamer@boxwidth}{\beamer@backgroundheight}}
+      \pgfusepath{fill}
+    \end{pgfpicture}
+  }
+}
+
+%%% Theme for normal pages %%%
 
 \defbeamertemplate*{frametitle}{dei theme}
 {%
@@ -83,7 +309,7 @@
 
 \defbeamertemplate*{headline}{dei theme}
 {
-  \hbox{%
+  \hbox to \beamer@paperwidth {%
     \begin{beamercolorbox}[wd=\beamer@sidebaronewidth,
                            ht=\beamer@headheight]{palette sidebar primary}
     \end{beamercolorbox}%
@@ -172,8 +398,6 @@
 }
 
 \defbeamertemplate*{navigation symbols}{dei theme}{}
-
-\setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
 
 %%%% All settings %%%%
 

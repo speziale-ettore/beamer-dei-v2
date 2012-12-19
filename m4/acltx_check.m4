@@ -30,6 +30,7 @@ if test "x$latex_enabled" = "xyes"; then
   ACLTX_CLASS_BEAMER()
   ACLTX_PACKAGE_BABEL([beamer], [english])
   ACLTX_PACKAGE_INPUTENC([beamer])
+  ACLTX_PACKAGE_ETEX([beamer])
 else
   AC_MSG_RESULT([no])
 fi
