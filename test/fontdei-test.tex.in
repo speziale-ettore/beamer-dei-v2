@@ -24,5 +24,6 @@
 \input{title-page.tex}
 \input{sectioning.tex}
 \input{frames.tex}
+\input{bibliography.tex}
 
 \end{document}

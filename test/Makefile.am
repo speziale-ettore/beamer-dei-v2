@@ -5,7 +5,9 @@ MAINTAINERCLEANFILES = Makefile.in
 
 TEXFILES = title-page.tex \
            sectioning.tex \
-           frames.tex
+           frames.tex \
+	   bibliography.tex \
+	   bibliography.bib
 
 TEXFONT = $(top_srcdir)/texmf/font
 TEXFONTDEP = $(top_srcdir)/texmf/font/beamerfontthemedei-v2.sty
