@@ -302,14 +302,13 @@
       \divide\beamer@instcenterx by 2
 
       \beamer@instcentery=\beamer@instheight
-      \divide\beamer@instcentery by 2
-      \multiply\beamer@instcentery by -1
+      \divide\beamer@instcentery by -2
       \advance\beamer@instcentery by \beamer@logobase
 
       \pgftext[at=\pgfpoint{\beamer@instcenterx}{\beamer@instcentery}]{%
         \parbox[t]{\beamer@instwidth}{%
-          \usebeamercolor[fg]{author in head/foot}%
-          \usebeamerfont{author in head/foot}%
+          \usebeamercolor[fg]{institute}%
+          \usebeamerfont{institute}%
           \ifx\insertinstitute\@empty%
             \centering{%
               \beamer@tempdim=\beamer@instheight%
@@ -339,8 +338,8 @@
 
       \pgftext[at=\pgfpoint{\beamer@instcenterx}{\beamer@instcentery}]{%
         \parbox[t]{\beamer@instwidth}{%
-          \usebeamercolor[fg]{author in head/foot}%
-          \usebeamerfont{author in head/foot}%
+          \usebeamercolor[fg]{institute}%
+          \usebeamerfont{institute}%
           \ifx\insertinstitute\@empty%
             Dipartimento di \\
             Elettronica e Informazione
@@ -416,6 +415,56 @@
       \pgfpathrectangle{\pgfpoint{\beamer@boxstart}{\beamer@backgroundbase}}
                        {\pgfpoint{\beamer@boxwidth}{\beamer@backgroundheight}}
       \pgfusepath{fill}
+
+      % We need to draw the title here instead than specializing title page
+      % because it is placed in an unusual position for beamer.
+
+      \newdimen\beamer@titlewidth
+      \newdimen\beamer@titleheight
+
+      \beamer@titlewidth=\beamer@paperwidth
+      \advance\beamer@titlewidth by -0.9in
+      \advance\beamer@titlewidth by -0.3in
+
+      \beamer@titleheight=\beamer@paperheight
+      \advance\beamer@titleheight by -\beamer@backgroundbase
+      \advance\beamer@titleheight by -0.4in
+
+      \newdimen\beamer@titlebase
+
+      \beamer@titlebase=0.05in
+      \advance\beamer@titlebase by \beamer@footheight
+      \advance\beamer@titlebase by \beamer@footextraheight
+
+      \pgfsetfillopacity{1}
+
+      \pgftext[left,base,at=\pgfpoint{0.9in}{\beamer@titlebase}]{%
+        \begin{beamercolorbox}[wd=\beamer@titlewidth,
+                               ht=\beamer@titleheight]{title}
+          \vbox to \beamer@titleheight {%
+            {%
+              \usebeamercolor[fg]{title}%
+              \usebeamerfont{title}%
+              \inserttitle%
+            }%
+            \ifx\insertsubtitle\@empty
+            \else
+            {%
+              \vskip 0.5em
+              \usebeamercolor[fg]{subtitle}%
+              \usebeamerfont{subtitle}%
+              \insertsubtitle%
+            }%
+            \fi
+            \vskip 2em
+            {%
+              \usebeamercolor[fg]{author}%
+              \usebeamerfont{author}%
+              \insertauthor%
+            }%
+          }%
+        \end{beamercolorbox}%
+      }
     \end{pgfpicture}
   }
 }
