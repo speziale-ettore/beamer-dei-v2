@@ -11,8 +11,6 @@
 \title{OuterDei Test}
 \subtitle{Let's learn how to define beamer outer themes}
 \author{Ettore Speziale}
-\institute[DEI]
-          {Politecnico di Milano -- Dipartimento di Elettronica e Informazione}
 \date{December 15, 2012}
 
 \useoutertheme{dei-v2}

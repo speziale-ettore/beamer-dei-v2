@@ -78,13 +78,93 @@
 
 %%% Theme for title page %%%
 
+\defbeamertemplate*{title page}{dei titlepage theme}{}
 \defbeamertemplate*{frametitle}{dei titlepage theme}{}
 \defbeamertemplate*{headline}{dei titlepage theme}{}
 \defbeamertemplate*{sidebar left}{dei titlepage theme}{}
 \defbeamertemplate*{footline}{dei titlepage theme}{}
 
-\defbeamertemplate*{title page}{dei titlepage theme}
+% Only used to draw the arrow.
+\definecolor{poli-orange}{RGB}{251,150,0}
+
+% Draw the Politecnico arrow: requires drawing box size.
+\newcommand{\insertpoliarrow}[1]
 {%
+  \begin{pgfpicture}{0in}{0in}{#1}{#1}
+    \newdimen\beamer@sidewidth
+    \newdimen\beamer@sideheight
+    \newdimen\beamer@sideoffset
+
+    \beamer@sideheight=#1
+    \divide \beamer@sideheight by 5
+
+    \beamer@sidewidth=#1
+    \divide \beamer@sidewidth by 5
+    \multiply \beamer@sidewidth by 4
+
+    \beamer@sideoffset=#1
+    \divide \beamer@sideoffset by 10
+
+    \newdimen\beamer@tmpx
+    \newdimen\beamer@tmpy
+    \newdimen\beamer@magic
+
+    \beamer@magic=#1
+    \divide \beamer@magic by 7
+
+    \pgfsetfillcolor{poli-orange}
+
+    \pgfpathmoveto{\pgfpoint{\beamer@sideoffset}{0.0in}}
+    \pgfpathlineto{\pgfpoint{#1}{0in}}
+
+    \beamer@tmpy=#1
+    \advance\beamer@tmpy by -\beamer@sideoffset
+    \pgfpathlineto{\pgfpoint{#1}{\beamer@tmpy}}
+
+    \beamer@tmpx=#1
+    \advance\beamer@tmpx by -\beamer@sideheight
+    \pgfpathlineto{\pgfpoint{\beamer@tmpx}{\beamer@tmpy}}
+
+    \beamer@tmpy=\beamer@sideheight
+    \advance\beamer@tmpy by \beamer@magic
+    \pgfpathlineto{\pgfpoint{\beamer@tmpx}{\beamer@tmpy}}
+
+    \beamer@tmpy=\beamer@magic
+    \pgfpathlineto{\pgfpoint{\beamer@tmpy}{#1}}
+
+    \beamer@tmpy=#1
+    \advance\beamer@tmpy by -\beamer@magic
+    \pgfpathlineto{\pgfpoint{0in}{\beamer@tmpy}}
+
+    \beamer@tmpx=#1
+    \advance\beamer@tmpx by -\beamer@sideheight
+    \advance\beamer@tmpx by -\beamer@magic
+    \pgfpathlineto{\pgfpoint{\beamer@tmpx}{\beamer@sideheight}}
+
+    \pgfpathlineto{\pgfpoint{\beamer@sideoffset}{\beamer@sideheight}}
+    \pgfpathclose{}
+
+    \pgfusepath{fill}
+  \end{pgfpicture}%
+}
+
+% Draw a vertical rule: requires rule height, and extra depth.
+\newcommand{\insertpolirule}[2]
+{%
+  \begin{pgfpicture}{0in}{0in}{0.01in}{#1}
+    \newdimen\beamer@base
+    \newdimen\beamer@height
+
+    \beamer@base=0in
+    \advance\beamer@base by -#2
+
+    \beamer@height=#1
+    \advance\beamer@height by #2
+
+    \pgfpathrectangle{\pgfpoint{0in}{\beamer@base}}
+                     {\pgfpoint{0.01in}{\beamer@height}}
+    \pgfusepath{fill}
+  \end{pgfpicture}%
 }
 
 \defbeamertemplate*{background}{dei titlepage theme}
@@ -212,6 +292,7 @@
       \pgfusepath{fill}
 
       \beamer@instwidth=\beamer@logowidth
+      \advance\beamer@instwidth by -0.04in
 
       \beamer@instheight=\beamer@backgroundheight
       \advance\beamer@instheight by -0.92in
@@ -220,25 +301,38 @@
       \beamer@instcenterx=\beamer@instwidth
       \divide\beamer@instcenterx by 2
 
-      \beamer@instcentery=\beamer@logobase
-      \advance\beamer@instcentery by -\beamer@instheight
+      \beamer@instcentery=\beamer@instheight
+      \divide\beamer@instcentery by 2
+      \multiply\beamer@instcentery by -1
+      \advance\beamer@instcentery by \beamer@logobase
 
       \pgftext[at=\pgfpoint{\beamer@instcenterx}{\beamer@instcentery}]{%
         \parbox[t]{\beamer@instwidth}{%
           \usebeamercolor[fg]{author in head/foot}%
           \usebeamerfont{author in head/foot}%
-          \centering\insertinstitute%
+          \ifx\insertinstitute\@empty%
+            \centering{%
+              \beamer@tempdim=\beamer@instheight%
+              \divide\beamer@tempdim by 7%
+              \multiply\beamer@tempdim by 4%
+              \insertpoliarrow{\beamer@tempdim}~~%
+              \insertpolirule{\beamer@instheight}{0in}~~%
+              POLITECNICO DI MILANO%
+            }%
+          \else
+            \centering\insertinstitute%
+          \fi%
         }%
       }
 
       \beamer@instwidth=\beamer@logowidth
-      \advance\beamer@instwidth by -0.56in
+      \advance\beamer@instwidth by -0.60in
 
       \advance\beamer@instheight by 0.1in
 
       \beamer@instcenterx=\beamer@instwidth
       \divide\beamer@instcenterx by 2
-      \advance\beamer@instcenterx by 0.56in
+      \advance\beamer@instcenterx by 0.60in
 
       \beamer@instcentery=\beamer@backgroundbase
       \advance\beamer@instcentery by \beamer@instheight
@@ -247,7 +341,12 @@
         \parbox[t]{\beamer@instwidth}{%
           \usebeamercolor[fg]{author in head/foot}%
           \usebeamerfont{author in head/foot}%
-          \centering\insertshortinstitute
+          \ifx\insertinstitute\@empty%
+            Dipartimento di \\
+            Elettronica e Informazione
+          \else%
+            \centering\insertshortinstitute%
+          \fi%
         }%
       }
 
@@ -415,13 +514,31 @@
                            dp=0.05in,
                            right]{author in head/foot}
       \usebeamerfont{author in head/foot}%
-      \insertshortinstitute\hspace*{14ex}~~\insertauthor\hspace*{2ex}%
+      \ifx\insertinstitute\@empty%
+        DEI
+      \else%
+        \insertshortinstitute%
+      \fi%
+      \hspace*{14ex}~~\insertauthor\hspace*{2ex}%
     \end{beamercolorbox}%
     \begin{beamercolorbox}[wd=\beamer@foottwowidth,
                            ht=\beamer@footheight,
                            dp=0.05in,
                            center]{institute in head/foot}
-      \insertlogo
+      \ifx\insertinstitute\@empty%
+        \usebeamerfont{institute in head/foot}
+        \centering{%
+          \beamer@tempdim=\beamer@footheight%
+          \divide\beamer@tempdim by 7%
+          \multiply\beamer@tempdim by 4%
+          POLITECNICO DI MILANO~~%
+          \insertpolirule{\beamer@footheight}{0.05in}~~%
+          \insertpoliarrow{\beamer@tempdim}~~%
+          Dipartimento di Elettronica e Informazione%
+        }%
+      \else%
+        \centering\insertinstitute%
+      \fi%
     \end{beamercolorbox}%
   }
 }
