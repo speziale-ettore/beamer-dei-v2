@@ -28,6 +28,7 @@ if LATEX_ENABLED
 
 CLEANFILES = colordei-test.pdf \
 	     fontdei-test.pdf \
+	     innerdei-test.pdf \
 	     outerdei-test.pdf \
 	     themedei-test.pdf
 
