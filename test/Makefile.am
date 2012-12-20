@@ -9,6 +9,9 @@ TEXFILES = title-page.tex \
 	   bibliography.tex \
 	   bibliography.bib
 
+TEXCOLOR = $(top_srcdir)/texmf/color
+TEXCOLORDEP = $(top_srcdir)/texmf/color/beamercolorthemedei-v2.sty
+
 TEXFONT = $(top_srcdir)/texmf/font
 TEXFONTDEP = $(top_srcdir)/texmf/font/beamerfontthemedei-v2.sty
 
@@ -17,10 +20,16 @@ TEXOUTERDEP = $(top_srcdir)/texmf/outer/beamerouterthemedei-v2.sty
 
 if LATEX_ENABLED
 
-CLEANFILES = fontdei-test.pdf \
+CLEANFILES = colordei-test.pdf \
+	     fontdei-test.pdf \
 	     outerdei-test.pdf
 
 all-local: pdf-local
+
+colordei-test.pdf: colordei-test.tex \
+                   $(TEXFILES) \
+		   $(TEXCOLORDEP)
+	$(RUBBER) --texpath $(TEXCOLOR) --pdf $<
 
 fontdei-test.pdf: fontdei-test.tex \
                   $(TEXFILES) \
@@ -32,11 +41,16 @@ outerdei-test.pdf: outerdei-test.tex \
 		   $(TEXOUTERDEP)
 	$(RUBBER) --texpath $(TEXOUTER) --pdf $<
 
-pdf-local: fontdei-test.pdf \
+pdf-local: colordei-test.pdf \
+	   fontdei-test.pdf \
            outerdei-test.pdf
 
-clean-local: clean-fontdei-test \
+clean-local: clean-colordei-test \
+	     clean-fontdei-test \
              clean-outerdei-test
+
+clean-colordei-test:
+	$(RUBBER) --clean colordei-test.tex
 
 clean-fontdei-test:
 	$(RUBBER) --clean fontdei-test.tex

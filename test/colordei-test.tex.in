@@ -1,0 +1,29 @@
+
+% colordei-test.tex.in: test for colordei color theme.
+
+% rubber: depend @top_srcdir@/texmf/color/beamercolorthemedei-v2.sty
+
+\documentclass{beamer}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\title{ColorDei Test}
+\subtitle{Let's learn how to define beamer color themes}
+\author{Ettore Speziale}
+\institute[DEI]
+          {Politecnico di Milano -- Dipartimento di Elettronica e Informazione}
+\date{December 06, 2012}
+
+\usecolortheme{dei-v2}
+
+\setbeameroption{show notes}
+
+\begin{document}
+
+\input{title-page.tex}
+\input{sectioning.tex}
+\input{frames.tex}
+\input{bibliography.tex}
+
+\end{document}

@@ -18,6 +18,7 @@ configure
 *.swp
 
 # Test launchers are auto-geneated.
+colordei-test.tex
 fontdei-test.tex
 outerdei-test.tex
 
