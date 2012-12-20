@@ -200,14 +200,56 @@
 
       % Institute.
 
+      \newdimen\beamer@instwidth
+      \newdimen\beamer@instheight
+
+      \newdimen\beamer@instcenterx
+      \newdimen\beamer@instcentery
+
       \usebeamercolor[bg]{palette tertiary}
       \pgfpathrectangle{\pgfpoint{0in}{\beamer@backgroundbase}}
                        {\pgfpoint{0.56in}{0.92in}}
       \pgfusepath{fill}
 
-      % TODO: insertlogo.
+      \beamer@instwidth=\beamer@logowidth
 
-      % TODO: insertshortinstitute.
+      \beamer@instheight=\beamer@backgroundheight
+      \advance\beamer@instheight by -0.92in
+      \divide\beamer@instheight by 2
+
+      \beamer@instcenterx=\beamer@instwidth
+      \divide\beamer@instcenterx by 2
+
+      \beamer@instcentery=\beamer@logobase
+      \advance\beamer@instcentery by -\beamer@instheight
+
+      \pgftext[at=\pgfpoint{\beamer@instcenterx}{\beamer@instcentery}]{%
+        \parbox[t]{\beamer@instwidth}{%
+          \usebeamercolor[fg]{author in head/foot}%
+          \usebeamerfont{author in head/foot}%
+          \centering\insertinstitute%
+        }%
+      }
+
+      \beamer@instwidth=\beamer@logowidth
+      \advance\beamer@instwidth by -0.56in
+
+      \advance\beamer@instheight by 0.1in
+
+      \beamer@instcenterx=\beamer@instwidth
+      \divide\beamer@instcenterx by 2
+      \advance\beamer@instcenterx by 0.56in
+
+      \beamer@instcentery=\beamer@backgroundbase
+      \advance\beamer@instcentery by \beamer@instheight
+
+      \pgftext[at=\pgfpoint{\beamer@instcenterx}{\beamer@instcentery}]{%
+        \parbox[t]{\beamer@instwidth}{%
+          \usebeamercolor[fg]{author in head/foot}%
+          \usebeamerfont{author in head/foot}%
+          \centering\insertshortinstitute
+        }%
+      }
 
       % Opaque boxes.
 
@@ -294,11 +336,13 @@
     \advance\rightskip by 0.3cm plus 1fil%
     {%
       \usebeamercolor[fg]{frametitle}%
-      \usebeamerfont{frametitle}\insertframetitle\par%
+      \usebeamerfont{frametitle}%
+      \insertframetitle\par%
     }%
     {%
       \usebeamercolor[fg]{framesubtitle}%
-      \usebeamerfont{framesubtitle}\insertframesubtitle\par%
+      \usebeamerfont{framesubtitle}%
+      \insertframesubtitle\par%
     }%
     \vbox{}%
     \vskip-1em%
@@ -327,8 +371,8 @@
         }%
         {%
           \vskip1em%
-          \usebeamerfont{page number in head/foot}%
           \usebeamercolor[fg]{page number in head/foot}%
+          \usebeamerfont{page number in head/foot}%
           \centering\insertframenumber\hspace*{2ex}%
           \vfil%
         }%
@@ -370,8 +414,8 @@
                            ht=\beamer@footheight,
                            dp=0.05in,
                            right]{author in head/foot}
-      \usebeamerfont{author in head/foot}
-      \insertshortinstitute~~\insertauthor\hspace*{2ex}%
+      \usebeamerfont{author in head/foot}%
+      \insertshortinstitute\hspace*{14ex}~~\insertauthor\hspace*{2ex}%
     \end{beamercolorbox}%
     \begin{beamercolorbox}[wd=\beamer@foottwowidth,
                            ht=\beamer@footheight,
