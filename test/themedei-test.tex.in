@@ -1,0 +1,33 @@
+
+% themedei-test.tex.in: test for dei theme.
+
+% rubber: depend @top_srcdir@/texmf/color/beamercolorthemedei-v2.sty
+% rubber: depend @top_srcdir@/texmf/font/beamerfontthemedei-v2.sty
+% rubber: depend @top_srcdir@/texmf/inner/beamerinnerthemedei-v2.sty
+% rubber: depend @top_srcdir@/texmf/outer/beamerouterthemedei-v2.sty
+% rubber: depend @top_srcdir@/texmf/theme/beamerthemedei-v2.sty
+
+\documentclass{beamer}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\title{ThemeDei Test}
+\subtitle{Let's learn how to define beamer themes}
+\author{Ettore Speziale}
+\institute[DEI]
+          {Politecnico di Milano -- Dipartimento di Elettronica e Informazione}
+\date{December 06, 2012}
+
+\usetheme{dei-v2}
+
+\setbeameroption{show notes}
+
+\begin{document}
+
+\input{title-page.tex}
+\input{sectioning.tex}
+\input{frames.tex}
+\input{bibliography.tex}
+
+\end{document}

@@ -21,6 +21,7 @@ configure
 colordei-test.tex
 fontdei-test.tex
 outerdei-test.tex
+themedei-test.tex
 
 # LaTeX files.
 *.aux

@@ -18,11 +18,18 @@ TEXFONTDEP = $(top_srcdir)/texmf/font/beamerfontthemedei-v2.sty
 TEXOUTER = $(top_srcdir)/texmf/outer
 TEXOUTERDEP = $(top_srcdir)/texmf/outer/beamerouterthemedei-v2.sty
 
+TEXINNER = $(top_srcdir)/texmf/inner
+TEXINNERDEP = $(top_srcdir)/texmf/inner/beamerinnerthemedei-v2.sty
+
+TEXTHEME = $(top_srcdir)/texmf/theme
+TEXTHEMEDEP = $(top_srcdir)/texmf/theme/beamerthemedei-v2.sty
+
 if LATEX_ENABLED
 
 CLEANFILES = colordei-test.pdf \
 	     fontdei-test.pdf \
-	     outerdei-test.pdf
+	     outerdei-test.pdf \
+	     themedei-test.pdf
 
 all-local: pdf-local
 
@@ -41,13 +48,29 @@ outerdei-test.pdf: outerdei-test.tex \
 		   $(TEXOUTERDEP)
 	$(RUBBER) --texpath $(TEXOUTER) --pdf $<
 
+themedei-test.pdf: themedei-test.tex \
+                   $(TEXFILES) \
+		   $(TEXCOLORDEP) \
+		   $(TEXFONTDEP) \
+		   $(TEXINNERDEP) \
+		   $(TEXOUTERDEP) \
+		   $(TEXTHEMEDEP)
+	$(RUBBER) --texpath $(TEXCOLOR) \
+	          --texpath $(TEXFONT) \
+		  --texpath $(TEXINNER) \
+		  --texpath $(TEXOUTER) \
+		  --texpath $(TEXTHEME) \
+		  --pdf $<
+
 pdf-local: colordei-test.pdf \
 	   fontdei-test.pdf \
-           outerdei-test.pdf
+           outerdei-test.pdf \
+	   themedei-test.pdf
 
 clean-local: clean-colordei-test \
 	     clean-fontdei-test \
-             clean-outerdei-test
+             clean-outerdei-test \
+	     clean-themedei-test
 
 clean-colordei-test:
 	$(RUBBER) --clean colordei-test.tex
@@ -57,5 +80,8 @@ clean-fontdei-test:
 
 clean-outerdei-test:
 	$(RUBBER) --clean outerdei-test.tex
+
+clean-themedei-test:
+	$(RUBBER) --clean themedei-test.tex
 
 endif ## LATEX_ENABLED
