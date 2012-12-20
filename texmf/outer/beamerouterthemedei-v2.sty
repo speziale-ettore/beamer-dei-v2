@@ -62,6 +62,7 @@
   \begingroup
     \setlength{\hoffset}{-0.5\beamer@sidebarwidth}
 
+    \setbeamertemplate{title page}[dei titlepage theme]
     \setbeamertemplate{frametitle}[dei titlepage theme]
     \setbeamertemplate{headline}[dei titlepage theme]
     \setbeamertemplate{sidebar left}[dei titlepage theme]
@@ -81,6 +82,10 @@
 \defbeamertemplate*{headline}{dei titlepage theme}{}
 \defbeamertemplate*{sidebar left}{dei titlepage theme}{}
 \defbeamertemplate*{footline}{dei titlepage theme}{}
+
+\defbeamertemplate*{title page}{dei titlepage theme}
+{%
+}
 
 \defbeamertemplate*{background}{dei titlepage theme}
 {%
@@ -316,12 +321,17 @@
     \begin{beamercolorbox}[wd=\beamer@framebarwidth,
                            ht=\beamer@headheight]{frametitle}
       \vbox to \beamer@headheight{%
-        % TODO: use beamerfont.
-        \usebeamercolor[bg]{palette tertiary}%
-        \vrule width \beamer@framebarwidth height \beamer@framebarheight%
-        \vskip1em%
-        \centering\insertframenumber\hspace*{2ex}%
-        \vfil%
+        {%
+          \usebeamercolor[bg]{palette tertiary}%
+          \vrule width \beamer@framebarwidth height \beamer@framebarheight%
+        }%
+        {%
+          \vskip1em%
+          \usebeamerfont{page number in head/foot}%
+          \usebeamercolor[fg]{page number in head/foot}%
+          \centering\insertframenumber\hspace*{2ex}%
+          \vfil%
+        }%
       }%
     \end{beamercolorbox}%
   }
@@ -360,7 +370,7 @@
                            ht=\beamer@footheight,
                            dp=0.05in,
                            right]{author in head/foot}
-      % TODO: use beamerfont.
+      \usebeamerfont{author in head/foot}
       \insertshortinstitute~~\insertauthor\hspace*{2ex}%
     \end{beamercolorbox}%
     \begin{beamercolorbox}[wd=\beamer@foottwowidth,

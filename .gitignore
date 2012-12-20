@@ -20,6 +20,7 @@ configure
 # Test launchers are auto-geneated.
 colordei-test.tex
 fontdei-test.tex
+innerdei-test.tex
 outerdei-test.tex
 themedei-test.tex
 

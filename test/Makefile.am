@@ -43,6 +43,11 @@ fontdei-test.pdf: fontdei-test.tex \
 	          $(TEXFONTDEP)
 	$(RUBBER) --texpath $(TEXFONT) --pdf $<
 
+innerdei-test.pdf: innerdei-test.tex \
+                   $(TEXFILES) \
+		   $(TEXINNERDEP)
+	$(RUBBER) --texpath $(TEXINNER) --pdf $<
+
 outerdei-test.pdf: outerdei-test.tex \
                    $(TEXFILES) \
 		   $(TEXOUTERDEP)
@@ -64,11 +69,13 @@ themedei-test.pdf: themedei-test.tex \
 
 pdf-local: colordei-test.pdf \
 	   fontdei-test.pdf \
+	   innerdei-test.pdf \
            outerdei-test.pdf \
 	   themedei-test.pdf
 
 clean-local: clean-colordei-test \
 	     clean-fontdei-test \
+	     clean-innerdei-test \
              clean-outerdei-test \
 	     clean-themedei-test
 
@@ -77,6 +84,9 @@ clean-colordei-test:
 
 clean-fontdei-test:
 	$(RUBBER) --clean fontdei-test.tex
+
+clean-innerdei-test:
+	$(RUBBER) --clean innerdei-test.tex
 
 clean-outerdei-test:
 	$(RUBBER) --clean outerdei-test.tex

@@ -1,0 +1,29 @@
+
+% innerdei-test.tex.in: test for innerdei inner theme.
+
+% rubber: depend @top_srcdir@/texmf/inner/beamerinnerthemedei-v2.sty
+
+\documentclass{beamer}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\title{InnerDei Test}
+\subtitle{Let's learn how to define beamer inner themes}
+\author{Ettore Speziale}
+\institute[DEI]
+          {Politecnico di Milano -- Dipartimento di Elettronica e Informazione}
+\date{December 15, 2012}
+
+\useinnertheme{dei-v2}
+
+\setbeameroption{show notes}
+
+\begin{document}
+
+\input{title-page.tex}
+\input{sectioning.tex}
+\input{frames.tex}
+\input{bibliography.tex}
+
+\end{document}

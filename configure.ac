@@ -18,6 +18,7 @@ AC_CONFIG_FILES([Makefile \
 
 AC_CONFIG_FILES([test/colordei-test.tex \
                  test/fontdei-test.tex \
+                 test/innerdei-test.tex \
                  test/outerdei-test.tex \
                  test/themedei-test.tex])
 
