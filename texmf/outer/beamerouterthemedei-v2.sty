@@ -52,12 +52,6 @@
 \setbeamersize{sidebar width left=\beamer@sidebarwidth}
 \setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
 
-% TODO: remove.
-\usecolortheme{dei-v2}
-\useinnertheme{dei-v2}
-
-% TODO: usebeamerfont.
-
 %%%% Presentation settings %%%%
 
 \mode<presentation>
@@ -322,6 +316,7 @@
     \begin{beamercolorbox}[wd=\beamer@framebarwidth,
                            ht=\beamer@headheight]{frametitle}
       \vbox to \beamer@headheight{%
+        % TODO: use beamerfont.
         \usebeamercolor[bg]{palette tertiary}%
         \vrule width \beamer@framebarwidth height \beamer@framebarheight%
         \vskip1em%
@@ -365,6 +360,7 @@
                            ht=\beamer@footheight,
                            dp=0.05in,
                            right]{author in head/foot}
+      % TODO: use beamerfont.
       \insertshortinstitute~~\insertauthor\hspace*{2ex}%
     \end{beamercolorbox}%
     \begin{beamercolorbox}[wd=\beamer@foottwowidth,
