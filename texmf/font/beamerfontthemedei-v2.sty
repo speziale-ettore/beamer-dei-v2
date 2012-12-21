@@ -14,47 +14,51 @@
 % DEI uses Arial, but it is not free: use helvetica instead.
 \RequirePackage{helvet}
 
-\setbeamerfont{title}{size=\LARGE,series=\bfseries,parent=structure}
-\setbeamerfont{title in head/foot}{}
-\setbeamerfont{title in sidebar}{}
+\setbeamerfont*{title}{size=\LARGE,series=\bfseries,parent=structure}
+\setbeamerfont*{title in head/foot}{}
+\setbeamerfont*{title in sidebar}{}
 
-\setbeamerfont{subtitle}{size=\Large,series=\normalfont,parent=title}
+\setbeamerfont*{subtitle}{size=\Large,series=\normalfont,parent=title}
 
-\setbeamerfont{author}{size=\small,parent=structure}
-\setbeamerfont{author in head/foot}{size=\Tiny,series=\bfseries}
-\setbeamerfont{author in sidebar}{}
+\setbeamerfont*{author}{size=\small,parent=structure}
+\setbeamerfont*{author in head/foot}{size=\Tiny,series=\bfseries}
+\setbeamerfont*{author in sidebar}{}
 
-\setbeamerfont{date}{size=\scriptsize,parent=structure}
-\setbeamerfont{date in head/foot}{}
-\setbeamerfont{date in sidebar}{}
+\setbeamerfont*{date}{size=\scriptsize,parent=structure}
+\setbeamerfont*{date in head/foot}{}
+\setbeamerfont*{date in sidebar}{}
 
-\setbeamerfont{sidebar}{parent={tiny structure}}
-\setbeamerfont{sidebar left}{parent=sidebar}
-\setbeamerfont{sidebar right}{parent=sidebar}
+\setbeamerfont*{sidebar}{parent={tiny structure}}
+\setbeamerfont*{sidebar left}{parent=sidebar}
+\setbeamerfont*{sidebar right}{parent=sidebar}
 
-\setbeamerfont{institute}{size=\tiny,series=\bfseries}
-\setbeamerfont{institute in head/foot}{size=\Tiny,series=\bfseries}
+\setbeamerfont*{institute}{size=\tiny,series=\bfseries}
+\setbeamerfont*{institute in head/foot}{size=\Tiny,series=\bfseries}
 
-\setbeamerfont{frametitle}{size=\Large,
-                           series=\bfseries,
-                           parent=structure}
-\setbeamerfont{framesubtitle}{size=\footnotesize,
-                              series=\normalfont,
-                              parent=frametitle}
+\setbeamerfont*{section in toc}{}
+\setbeamerfont*{subsection in toc}{}
+\setbeamerfont*{subsubsection in toc}{}
 
-\setbeamerfont{block title}{size=\normalsize,
+\setbeamerfont*{frametitle}{size=\Large,
                             series=\bfseries,
-                            parent={structure,block body}}
+                            parent=structure}
+\setbeamerfont*{framesubtitle}{size=\footnotesize,
+                               series=\normalfont,
+                               parent=frametitle}
 
-\setbeamerfont{abstract}{size=\normalsize}
-\setbeamerfont{abstract title}{size=\Large,
-                               series=\bfseries,
-                               parent={abstract,structure}}
+\setbeamerfont*{block title}{size=\normalsize,
+                             series=\bfseries,
+                             parent={structure,block body}}
 
-\setbeamerfont{page number in head/foot}{size=\tiny,
-                                         series=\bfseries}
+\setbeamerfont*{abstract}{size=\normalsize}
+\setbeamerfont*{abstract title}{size=\Large,
+                                series=\bfseries,
+                                parent={abstract,structure}}
 
-\setbeamerfont{note page}{size=\footnotesize}
+\setbeamerfont*{page number in head/foot}{size=\tiny,
+                                          series=\bfseries}
+
+\setbeamerfont*{note page}{size=\footnotesize}
 
 %%%% All settings %%%%
 

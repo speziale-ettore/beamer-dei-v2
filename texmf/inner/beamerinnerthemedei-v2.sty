@@ -11,9 +11,43 @@
 
 \mode<presentation>
 
+\defbeamertemplate*{section in toc}{dei theme}
+{%
+  \leavevmode%
+  \usebeamercolor[fg]{item}%
+  \inserttocsectionnumber. % Here we need a space before newline.
+  \usebeamercolor[fg]{section in toc}%
+  \inserttocsection%
+  \par%
+}
+
+\defbeamertemplate*{subsection in toc}{dei theme}
+{%
+  \leavevmode%
+  \usebeamercolor[fg]{item}%
+  \leftskip=1.2em\inserttocsubsectionnumber. % See above.
+  \usebeamercolor[fg]{subsection in toc}%
+  \inserttocsubsection%
+  \par%
+}
+
+\defbeamertemplate*{subsubsection in toc}{dei theme}
+{%
+  \leavevmode%
+  \usebeamercolor[fg]{item}%
+  \leftskip=2.4em\inserttocsubsubsectionnumber. % See above.
+  \usebeamercolor[fg]{subsubsection in toc}%
+  \inserttocsubsubsection%
+  \par%
+}
+
 \defbeamertemplate*{itemize item}{dei theme}{\tiny$\blacksquare$}
 \defbeamertemplate*{itemize subitem}{dei theme}{$\bullet$}
 \defbeamertemplate*{itemize subsubitem}{dei theme}{$-$}
+
+\defbeamertemplate*{enumerate item}{dei theme}{\insertenumlabel.}
+\defbeamertemplate*{enumerate subitem}{dei theme}{\insertsubenumlabel.}
+\defbeamertemplate*{enumerate subsubitem}{dei theme}{\insertsubsubenumlabel.}
 
 \defbeamertemplate*{bibliography item}{dei theme}{$\blacktriangleright$}
 
