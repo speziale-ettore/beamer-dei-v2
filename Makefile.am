@@ -9,5 +9,7 @@ MAINTAINERCLEANFILES = aclocal.m4 \
 
 ACLOCAL_AMFLAGS = -I m4 -I $(AUTOCONF_MACRO_ARCHIVE_DIR)
 
+EXTRA_DIST = bootstrap
+
 maintainer-clean-local:
 	rm -rf build-aux
