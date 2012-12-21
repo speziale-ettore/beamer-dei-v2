@@ -20,3 +20,17 @@ designed to work together.
 
 Unfortunately, I am not very expert in defining Beamer themes, so any suggestion
 to improve the theme is welcome.
+
+Install
+-------
+
+Themes are distributed using standard GNU packaging tools, so:
+
+    $ ./configure --prefix=$INSTALL_PREFIX
+    $ make
+    $ make install
+
+Themes will be installed under the TeX tree in `$INSTALL_PREFIX/share/texmf`.
+
+If you prefer putting themes into your LaTeX project, just copy the contents of
+`texmf/*` to your project compilation directory.
