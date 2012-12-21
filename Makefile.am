@@ -1,7 +1,7 @@
 
 ## Makefile.am: project main makefile.
 
-SUBDIRS = test
+SUBDIRS = texmf test
 
 MAINTAINERCLEANFILES = aclocal.m4 \
                        configure \

@@ -1,5 +1,5 @@
 
-## Makefile.am: builds thesis.
+## Makefile.am: builds tests.
 
 MAINTAINERCLEANFILES = Makefile.in
 
@@ -32,7 +32,7 @@ CLEANFILES = colordei-test.pdf \
 	     outerdei-test.pdf \
 	     themedei-test.pdf
 
-all-local: pdf-local
+EXTRA_DIST = $(TEXFILES)
 
 colordei-test.pdf: colordei-test.tex \
                    $(TEXFILES) \
@@ -68,11 +68,11 @@ themedei-test.pdf: themedei-test.tex \
 		  --texpath $(TEXTHEME) \
 		  --pdf $<
 
-pdf-local: colordei-test.pdf \
-	   fontdei-test.pdf \
-	   innerdei-test.pdf \
-           outerdei-test.pdf \
-	   themedei-test.pdf
+check-local: colordei-test.pdf \
+             fontdei-test.pdf \
+             innerdei-test.pdf \
+             outerdei-test.pdf \
+             themedei-test.pdf
 
 clean-local: clean-colordei-test \
 	     clean-fontdei-test \

@@ -14,6 +14,12 @@ dnl LaTeX checks.
 ACLTX_CHECK()
 
 AC_CONFIG_FILES([Makefile \
+                 texmf/Makefile \
+                 texmf/color/Makefile \
+                 texmf/font/Makefile \
+                 texmf/inner/Makefile \
+                 texmf/outer/Makefile \
+                 texmf/theme/Makefile \
                  test/Makefile])
 
 AC_CONFIG_FILES([test/colordei-test.tex \
