@@ -615,6 +615,13 @@
 
 \defbeamertemplate*{navigation symbols}{dei theme}{}
 
+% Reset section counter at part start.
+\AtBeginPart
+{
+  \beamer@tocsectionnumber=0\relax
+  \setcounter{section}{0}
+}
+
 %%%% All settings %%%%
 
 \mode<all>
