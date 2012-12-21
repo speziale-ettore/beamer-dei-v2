@@ -15,7 +15,6 @@
 \title{ThemeDei Test}
 \subtitle{Let's learn how to define beamer themes}
 \author{Ettore Speziale}
-\date{December 06, 2012}
 
 \usetheme{dei-v2}
 

@@ -11,7 +11,6 @@
 \title{OuterDei Test}
 \subtitle{Let's learn how to define beamer outer themes}
 \author{Ettore Speziale}
-\date{December 15, 2012}
 
 \useoutertheme{dei-v2}
 
