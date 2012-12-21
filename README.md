@@ -15,7 +15,7 @@ Current features:
 * a beamer full theme
 
 The partitioning into different themes was done only to organize the sources.
-You can use every theme standalone, but this is not encouraged because they was
+You can use every theme standalone, but this is not encouraged because they were
 designed to work together.
 
 Unfortunately, I am not very expert in defining Beamer themes, so any suggestion
