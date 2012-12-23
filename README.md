@@ -47,7 +47,7 @@ others are shaded. It is equivalent to the following beamer code:
 
     \AtBeginSection[]
     {
-      \begin{frame}{Outline}
+      \begin{frame}{Section Outline}
         \tableofcontents[currentsection]
       \end{frame}
     }
