@@ -34,3 +34,22 @@ Themes will be installed under the TeX tree in `$INSTALL_PREFIX/share/texmf`.
 
 If you prefer putting themes into your LaTeX project, just copy the contents of
 `texmf/*` to your project compilation directory.
+
+Options
+-------
+
+The theme defines some beamer options to ease the burden of preparing a new
+lecture.
+
+The `insertsectiontoc` beamer option allows to automatically insert a table of
+contents before each section. The current section is highlighted, while the
+others are shaded. It is equivalent to the following beamer code:
+
+    \AtBeginSection[]
+    {
+      \begin{frame}{Outline}
+        \tableofcontents[currentsection]
+      \end{frame}
+    }
+
+By default it is disabled.
